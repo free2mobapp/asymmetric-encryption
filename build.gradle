@@ -1,0 +1,32 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.1'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'co.uk.ksb'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+//	implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '9.31'
+	implementation 'org.bitbucket.b_c:jose4j:0.9.3'
+	implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
