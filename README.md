@@ -14,18 +14,18 @@ java.security.KeyFactory class can be used to
   convert key spec objects back to private or public key objects.
 
 
-## Generate the key
+# Generate the key
 launch MINGw64 in C:\Program Files\Git\mingw64\bin 
 which will give a linux like command prompt.
 
 To generate the keys in PCKS8 format.
-# First generate private key with pkcs1 encoding
+## First generate private key with pkcs1 encoding
 openssl genrsa -out private_key_rsa_2048_pkcs1.pem 2048
 
-# Now convert private key to pkcs8 encoding
+## Now convert private key to pkcs8 encoding
 openssl pkcs8 -topk8 -in private_key_rsa_2048_pkcs1.pem -inform pem -out private_key_rsa_2048_pkcs8-exported.pem -outform pem -nocrypt
 
-# Private key will look like this
+## Private key will look like this
 -----BEGIN PRIVATE KEY-----
 
 MIIJQgIBADANBgkqhkiG9w0BAQEFAASCCSwwggkoAgEAAoICAQDVgLrCSDC5mLRL
@@ -37,10 +37,10 @@ INdXsP5kNlRK181jtU/xtQYfwSjkKA==
 
 -----END PRIVATE KEY-----
 
-# Export public key in pkcs8 format
+## Export public key in pkcs8 format
 openssl rsa -pubout -outform pem -in private_key_rsa_2048_pkcs8-exported.pem -out public_key_rsa_2048_pkcs8-exported.pem
 
-# Public key will look like this
+## Public key will look like this
 -----BEGIN PUBLIC KEY-----
 
 MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA1YC6wkgwuZi0SyWPqJGF
@@ -52,14 +52,14 @@ JSS0RvKh0dF3ddlOKV/TQUsCAwEAAQ==
 
 -----END PUBLIC KEY-----
 
-## Running and testing the application
+# Running and testing the application
 Start AsymmetricEncryptionApplication
 
-From postman:
+# From postman:
   POST - http://localhost:8080/rest/register
 Request:
  {
-     "header": {
+  "header": {
      "requestId": "1234",
      "username": "bhasker"
     },
